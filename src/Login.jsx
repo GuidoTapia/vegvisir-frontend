@@ -1,10 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Mark from "./assets/Mark.svg";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChangeEmail = (event) => {
     console.log(email);
@@ -12,6 +15,9 @@ export default function Login() {
   };
   const handleChangePassword = (event) => {
     setPassword(event.target.value);
+  };
+  const onClick = () => {
+    navigate("/areas");
   };
   return (
     <div className="flex justify-center items-center h-screen">
@@ -47,7 +53,10 @@ export default function Login() {
             Forgot your password?
           </a>
         </div>
-        <button className="bg-indigo-600 w-full py-2 text-white text-sm leading-5 font-medium rounded-md">
+        <button
+          className="bg-indigo-600 w-full py-2 text-white text-sm leading-5 font-medium rounded-md"
+          onClick={onClick}
+        >
           Sign in
         </button>
       </div>
